@@ -34,12 +34,6 @@ from core import (
     get_spotify_playlist, get_youtube_playlist)
 
 
-REPO = """
-🤖 **Music Player**
-- Repo: [GitHub](https://github.com/AsmSafone/MusicPlayer)
-- License: AGPL-3.0-or-later
-"""
-
 if config.BOT_TOKEN:
     bot = Client(
         "MusicPlayer",
@@ -51,10 +45,6 @@ if config.BOT_TOKEN:
 else:
     client = app
 
-
-@client.on_message(
-    filters.command("repo", config.PREFIXES) & ~filters.bot & ~filters.edited
-)
 @handle_error
 async def repo(_, message: Message):
     await message.reply_text(REPO, disable_web_page_preview=True)
